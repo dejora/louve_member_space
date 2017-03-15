@@ -47,8 +47,8 @@ class LoginController
                 $error_msg = "PSSSSTTT: en dev c'est login/password";
             }
         }
-        $session = new Token();
-        $token = $session->generateToken();
+        $token = new Token();
+        $token = $token->generateToken();
 
         // load views
         require APP . 'view/_templates/public_header.php';

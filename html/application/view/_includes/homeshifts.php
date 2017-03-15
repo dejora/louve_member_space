@@ -5,25 +5,22 @@
     <?php
 
     $shifts = $user->getNextShifts();
-	
-    if ( isset($shifts[0]) && null !== $shifts[0])
-    {
+	//if ($shifts)
+    if (isset($shifts[0]) && null !== $shifts[0]) {
 		
 		$myshift = $shifts[0];
         $nexttime = $myshift->date;
-		 
+
         echo ('<h3> '. $nexttime .'</h3>');
 		echo ('<h3> Coordinateurs</h3>');
 	    $countCoordinator = count($myshift->coordinators);
-            for($j = 0; $j < $countCoordinator ; $j++)
-            {
-		    echo ($myshift->coordinators[$j]->getFirstname() . " " . $myshift->coordinators[$j]->getLastname()  . "<br>");
+		for ($j = 0; $j < $countCoordinator ; $j++) {
+			echo ($myshift->coordinators[$j]->getFirstname() . " " . $myshift->coordinators[$j]->getLastname()  . "<br>");
 			echo ('<a href="mailto:' . $myshift->coordinators[$j]->getEmail() . '">' . $myshift->coordinators[$j]->getEmail() );
-            echo ("</a><br>");
-		    echo ("<a href='tel:" . $myshift->coordinators[$j]->getPhone()  . "'>" . $myshift->coordinators[$j]->getPhone()  . "</a><br>");
-            }
-    }
-    else {
+			echo ("</a><br>");
+			echo ("<a href='tel:" . $myshift->coordinators[$j]->getPhone()  . "'>" . $myshift->coordinators[$j]->getPhone()  . "</a><br>");
+		}
+    } else {
         echo ("<h3>Vous n'êtes inscrit a aucun service.</h3>");
     }
     ?>

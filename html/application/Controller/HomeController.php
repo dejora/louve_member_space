@@ -24,9 +24,9 @@ class HomeController
      */
     public function __construct()
     {
-        $this->session = new Session();
+        $session = new Session();
 
-        if (!$this->session->isLogged()) {
+        if (!$session->isLogged()) {
             header('location:'.URL.'login/index');
         }
     }
